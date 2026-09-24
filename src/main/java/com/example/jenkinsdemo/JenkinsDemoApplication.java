@@ -11,6 +11,6 @@ public class JenkinsDemoApplication {
    }
    @GetMapping("/")
    public String home() {
-       return "Hello from Jenkins CI/CD!";
+       return "Hello from Jenkins CI/CD!\n";
    }
 }
