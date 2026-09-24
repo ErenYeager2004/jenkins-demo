@@ -18,5 +18,15 @@ pipeline {
 				sh 'docker build -t jenkins-demo:latest .'
 			}
 		}
+		
+		stage('Deploy') {
+			steps {
+				sh '''
+					docker stop jenkins-demo || true
+					docker rm jenkins-demo || true
+					docker run -de --name jenkins-demo -p 8081:8080 jenkins-demo:latest
+				'''
+			}
+		}
 	}
 }
