@@ -24,7 +24,7 @@ pipeline {
 				sh '''
 					docker stop jenkins-demo || true
 					docker rm jenkins-demo || true
-					docker run -de --name jenkins-demo -p 8081:8080 jenkins-demo:latest
+					docker run -d --name jenkins-demo -p 8081:8080 jenkins-demo:latest
 				'''
 			}
 		}
