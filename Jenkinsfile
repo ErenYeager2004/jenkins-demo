@@ -14,6 +14,7 @@ pipeline {
 			}
 			steps {
 				sh 'mvn clean package'
+				stash name: 'app-jar', includes: 'target/*.jar'
 			}
 		}
 
@@ -22,6 +23,7 @@ pipeline {
 				label 'Build-Agent-1'
 			}
 			steps {
+				unstash 'app-jar'
 				sh 'docker build -t jenkins-demo:latest .'
 			}
 		}
