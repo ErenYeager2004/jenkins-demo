@@ -1,7 +1,5 @@
 pipeline {
-	agent {
-		label 'Build-Agent'
-	}
+	agent none
 	stages {
 		stage('Checkout') {
 			steps {
@@ -10,18 +8,27 @@ pipeline {
 		}
 	
 		stage('Build') {
+			agent {
+				label 'Build-Agent'
+			}
 			steps {
 				sh 'mvn clean package'
 			}
 		}
 
 		stage('Docker Build') {
+			agent{
+				label 'Build-Agent-1'
+			}
 			steps {
 				sh 'docker build -t jenkins-demo:latest .'
 			}
 		}
 		
 		stage('Deploy') {
+			agent {
+				label 'Build-Agent-2'
+			}
 			steps {
 				sh '''
 					docker stop jenkins-demo || true
