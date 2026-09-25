@@ -46,6 +46,6 @@ pipeline {
 					docker run -d --name jenkins-demo -p 8081:8080 jenkins-demo:latest
 				'''
 			}
-		}
+			}
 		}
 }
