@@ -1,5 +1,7 @@
 pipeline {
-	agent any
+	agent {
+		label 'Build-Agent'
+	}
 	stages {
 		stage('Checkout') {
 			steps {
