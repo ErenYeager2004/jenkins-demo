@@ -35,7 +35,7 @@ pipeline {
 		
 		stage('Deploy') {
 			agent {
-				label 'Build-Agent-2'
+					label 'Build-Agent-2'
 			}
 			steps {
 				unstash 'docker-image'
